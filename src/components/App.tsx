@@ -64,24 +64,24 @@ const ExpandIcon = (p: React.SVGProps<SVGSVGElement>) => (
 );
 
 /* Payment icons */
+const PAY_LOGOS: Record<string, string> = {
+  Visa: '/assets/logos/visa.svg',
+  MasterCard: '/assets/logos/mastercard.svg',
+  PayPal: '/assets/logos/paypal.svg',
+  Yape: '/assets/logos/yape.svg',
+  Plin: '/assets/logos/plin.svg',
+};
+
 function PayIcon({ name }: { name: string }) {
-  const base: React.SVGProps<SVGSVGElement> = { width: 38, height: 24, style: { borderRadius: 4, display: 'block', flexShrink: 0 } as React.CSSProperties };
-  if (name === 'Visa') return (
-    <svg viewBox="0 0 38 24" {...base}><rect width="38" height="24" rx="3" fill="#1a1f71"/><text x="19" y="17" textAnchor="middle" fill="#fff" fontSize="11" fontStyle="italic" fontWeight="700" fontFamily="Arial, sans-serif">VISA</text></svg>
+  const src = PAY_LOGOS[name];
+  if (!src) return null;
+  return (
+    <img
+      src={src}
+      alt={name}
+      style={{ width: 38, height: 24, borderRadius: 4, display: 'block', flexShrink: 0, objectFit: 'contain' }}
+    />
   );
-  if (name === 'MasterCard') return (
-    <svg viewBox="0 0 38 24" {...base}><rect width="38" height="24" rx="3" fill="#252525"/><circle cx="14.5" cy="12" r="7.5" fill="#EB001B"/><circle cx="23.5" cy="12" r="7.5" fill="#F79E1B" opacity="0.92"/></svg>
-  );
-  if (name === 'PayPal') return (
-    <svg viewBox="0 0 38 24" {...base}><rect width="38" height="24" rx="3" fill="#fff" stroke="#d0d0d0" strokeWidth="0.8"/><text x="19" y="16.5" textAnchor="middle" fill="#003087" fontSize="9.5" fontWeight="700" fontFamily="Arial, sans-serif">PayPal</text></svg>
-  );
-  if (name === 'Yape') return (
-    <svg viewBox="0 0 38 24" {...base}><rect width="38" height="24" rx="3" fill="#742284"/><text x="19" y="17" textAnchor="middle" fill="#fff" fontSize="12" fontWeight="800" fontFamily="Arial, sans-serif">Y</text></svg>
-  );
-  if (name === 'Plin') return (
-    <svg viewBox="0 0 38 24" {...base}><rect width="38" height="24" rx="3" fill="#00B6C9"/><text x="19" y="16" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="700" fontFamily="Arial, sans-serif">plin</text></svg>
-  );
-  return null;
 }
 
 /* Scroll reveal hook */
