@@ -5,6 +5,16 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.
 
 ---
 
+## [1.3] - 2026-06-04
+
+### Modificado
+- Íconos de medios de pago en la card de precio reemplazados: los SVG generados por código en `PayIcon` fueron sustituidos por archivos SVG reales ubicados en `public/assets/logos/`
+
+### Añadido
+- Logos de medios de pago: `visa.svg`, `mastercard.svg`, `paypal.svg`, `yape.svg`, `plin.svg`
+
+---
+
 ## [1.2] - 2026-06-03
 
 ### Corregido
