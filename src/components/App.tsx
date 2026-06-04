@@ -529,11 +529,11 @@ function Footer({ t, lang }: { t: I18nStrings; lang: Lang }) {
             <h5>{t.footer.contact_title}</h5>
             <a href="https://academiacodium.com/" target="_blank" rel="noopener noreferrer">academiacodium.com</a>
             <a href={waLink()} target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            <span>@academiacodium</span>
+            <span>@academiacodiumlatam</span>
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© {year} Academia Codium. {t.footer.rights}</span>
+          <span>© {year} Academia Codium Latam. {t.footer.rights}</span>
           <div className="fb-right">
             <a href={waLink()} target="_blank" rel="noopener noreferrer">{t.cta}</a>
           </div>
