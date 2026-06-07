@@ -114,17 +114,19 @@ function Header({ t, lang, setLang }: { t: I18nStrings; lang: Lang; setLang: (l:
   const [pct, setPct] = useState(0);
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  const openRef = useRef(open);
+  openRef.current = open;
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20);
       const h = document.documentElement.scrollHeight - window.innerHeight;
       setPct(h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0);
-      if (open) setOpen(false);
+      if (openRef.current) setOpen(false);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, [open]);
+  }, []);
   useEffect(() => {
     if (!open) return;
     const onClickOutside = (e: MouseEvent) => {
