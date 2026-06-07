@@ -135,13 +135,22 @@ function Header({ t, lang, setLang }: { t: I18nStrings; lang: Lang; setLang: (l:
           {links.map(([k, href]) => (
             <a key={k} href={href} onClick={() => setOpen(false)}>{t.nav[k]}</a>
           ))}
+          <div className="nav-mobile-extras">
+            <div className="lang-toggle">
+              <button className={lang === 'es' ? 'active' : ''} onClick={() => setLang('es')}>ES</button>
+              <button className={lang === 'en' ? 'active' : ''} onClick={() => setLang('en')}>EN</button>
+            </div>
+            <a className="btn btn-primary" href={waLink()} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
+              {t.cta}<ArrowIcon />
+            </a>
+          </div>
         </nav>
         <div className="nav-right">
-          <div className="lang-toggle">
+          <div className="lang-toggle nav-desktop-only">
             <button className={lang === 'es' ? 'active' : ''} onClick={() => setLang('es')}>ES</button>
             <button className={lang === 'en' ? 'active' : ''} onClick={() => setLang('en')}>EN</button>
           </div>
-          <a className="btn btn-primary" href={waLink()} target="_blank" rel="noopener noreferrer" style={{ padding: '11px 20px', fontSize: 14.5 }}>
+          <a className="btn btn-primary nav-desktop-only" href={waLink()} target="_blank" rel="noopener noreferrer" style={{ padding: '11px 20px', fontSize: 14.5 }}>
             {t.cta}<ArrowIcon />
           </a>
           <button className="nav-toggle" onClick={() => setOpen(!open)} aria-label="Menú">
