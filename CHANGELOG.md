@@ -5,6 +5,22 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.
 
 ---
 
+## [1.4] - 2026-06-07
+
+### Modificado
+- Header móvil (≤940px): selector de idioma (ES/EN) y botón "Inscríbeme" eliminados del área visible del header y movidos al menú desplegable para limpiar la barra de navegación en pantallas pequeñas
+
+### Corregido
+- Selector de idioma en menú móvil: ahora ocupa el 100% del ancho con cada botón al 50%, evitando que el fondo activo se vea como un cuadradito
+- Botón "Inscríbeme" en menú móvil: color de texto forzado a oscuro (`#1a1500`) para correcta legibilidad sobre fondo amarillo
+- Menú móvil se cerraba solo al abrirse (parpadeo): causado por `open` como dependencia del `useEffect` de scroll; reemplazado por un `ref` para leer el estado sin recrear el listener
+
+### Añadido
+- Menú móvil se cierra automáticamente al hacer scroll fuera de él
+- Menú móvil se cierra automáticamente al hacer click fuera del header
+
+---
+
 ## [1.3] - 2026-06-04
 
 ### Modificado

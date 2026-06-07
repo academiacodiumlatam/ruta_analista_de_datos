@@ -113,21 +113,33 @@ function Header({ t, lang, setLang }: { t: I18nStrings; lang: Lang; setLang: (l:
   const [scrolled, setScrolled] = useState(false);
   const [pct, setPct] = useState(0);
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const openRef = useRef(open);
+  openRef.current = open;
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20);
       const h = document.documentElement.scrollHeight - window.innerHeight;
       setPct(h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0);
+      if (openRef.current) setOpen(false);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+  useEffect(() => {
+    if (!open) return;
+    const onClickOutside = (e: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener('mousedown', onClickOutside);
+    return () => document.removeEventListener('mousedown', onClickOutside);
+  }, [open]);
   const links: [keyof I18nStrings['nav'], string][] = [
     ['inicio', '#inicio'], ['ruta', '#ruta'], ['cursos', '#cursos'], ['precio', '#precio'], ['contacto', '#contacto'],
   ];
   return (
-    <header className={`site-header${scrolled ? ' scrolled' : ''}`}>
+    <header ref={headerRef} className={`site-header${scrolled ? ' scrolled' : ''}`}>
       <div className="wrap nav">
         <div className="progress-bar"><div className="progress-fill" style={{ width: pct + '%' }} /></div>
         <a className="nav-logo" href="#inicio"><img src={LOGO} alt="Academia Codium" /></a>
@@ -135,13 +147,22 @@ function Header({ t, lang, setLang }: { t: I18nStrings; lang: Lang; setLang: (l:
           {links.map(([k, href]) => (
             <a key={k} href={href} onClick={() => setOpen(false)}>{t.nav[k]}</a>
           ))}
+          <div className="nav-mobile-extras">
+            <div className="lang-toggle">
+              <button className={lang === 'es' ? 'active' : ''} onClick={() => setLang('es')}>ES</button>
+              <button className={lang === 'en' ? 'active' : ''} onClick={() => setLang('en')}>EN</button>
+            </div>
+            <a className="btn btn-primary" href={waLink()} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
+              {t.cta}<ArrowIcon />
+            </a>
+          </div>
         </nav>
         <div className="nav-right">
-          <div className="lang-toggle">
+          <div className="lang-toggle nav-desktop-only">
             <button className={lang === 'es' ? 'active' : ''} onClick={() => setLang('es')}>ES</button>
             <button className={lang === 'en' ? 'active' : ''} onClick={() => setLang('en')}>EN</button>
           </div>
-          <a className="btn btn-primary" href={waLink()} target="_blank" rel="noopener noreferrer" style={{ padding: '11px 20px', fontSize: 14.5 }}>
+          <a className="btn btn-primary nav-desktop-only" href={waLink()} target="_blank" rel="noopener noreferrer" style={{ padding: '11px 20px', fontSize: 14.5 }}>
             {t.cta}<ArrowIcon />
           </a>
           <button className="nav-toggle" onClick={() => setOpen(!open)} aria-label="Menú">
