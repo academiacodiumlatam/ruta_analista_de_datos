@@ -417,8 +417,9 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
     gap: 10px; padding-top: 14px; margin-top: 8px;
     border-top: 1px solid var(--line);
   }
-  .nav-mobile-extras .lang-toggle { justify-content: center; }
-  .nav-mobile-extras .btn { text-align: center; justify-content: center; width: 100%; }
+  .nav-mobile-extras .lang-toggle { width: 100%; }
+  .nav-mobile-extras .lang-toggle button { flex: 1; text-align: center; padding: 9px 0; }
+  .nav-mobile-extras .btn { text-align: center; justify-content: center; width: 100%; color: #1a1500 !important; }
   .cursor-glow { display: none; }
 }
 @media (max-width: 620px) {
