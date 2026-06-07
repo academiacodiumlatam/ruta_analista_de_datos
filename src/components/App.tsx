@@ -113,21 +113,31 @@ function Header({ t, lang, setLang }: { t: I18nStrings; lang: Lang; setLang: (l:
   const [scrolled, setScrolled] = useState(false);
   const [pct, setPct] = useState(0);
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20);
       const h = document.documentElement.scrollHeight - window.innerHeight;
       setPct(h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0);
+      if (open) setOpen(false);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [open]);
+  useEffect(() => {
+    if (!open) return;
+    const onClickOutside = (e: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener('mousedown', onClickOutside);
+    return () => document.removeEventListener('mousedown', onClickOutside);
+  }, [open]);
   const links: [keyof I18nStrings['nav'], string][] = [
     ['inicio', '#inicio'], ['ruta', '#ruta'], ['cursos', '#cursos'], ['precio', '#precio'], ['contacto', '#contacto'],
   ];
   return (
-    <header className={`site-header${scrolled ? ' scrolled' : ''}`}>
+    <header ref={headerRef} className={`site-header${scrolled ? ' scrolled' : ''}`}>
       <div className="wrap nav">
         <div className="progress-bar"><div className="progress-fill" style={{ width: pct + '%' }} /></div>
         <a className="nav-logo" href="#inicio"><img src={LOGO} alt="Academia Codium" /></a>
