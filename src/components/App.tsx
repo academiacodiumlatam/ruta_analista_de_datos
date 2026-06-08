@@ -8,8 +8,8 @@ const WA_NUMBER = '51912454308';
 const WA_MSG = 'Hola, me gustaría inscribirme a la Ruta completa del Analista de Datos 12 Cursos en Vivo por 299.90 Soles (Pago Único) + Certificaciones y mi acceso a Codium Projects de regalo';
 const waLink = () => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MSG)}`;
 const POWERBI_EMBED_URL = 'https://app.fabric.microsoft.com/view?r=eyJrIjoiNGYxNjIyYTItOGM0YS00NTljLTgxYjAtNzRlMzg3ZTI0ODM0IiwidCI6IjgxNzQ3YmU0LTBhNjQtNDU2NS04Y2NlLWE5MGNkODNkZGI4MSIsImMiOjR9';
-const ROUTE_IMAGE = 'https://rutadelanalista.academiacodium.com/img/RUTA%20DEL%20ANALISTA%20DE%20DATOS.png';
-const LOGO = '/assets/codium-logo-light.png';
+const ROUTE_IMAGE = '/assets/ruta_completa.webp';
+const LOGO = '/assets/codium-logo-light.webp';
 
 /* Tool logo with fallback */
 function ToolLogo({ cat, size = 20 }: { cat: CatKey; size?: number }) {
@@ -113,35 +113,56 @@ function Header({ t, lang, setLang }: { t: I18nStrings; lang: Lang; setLang: (l:
   const [scrolled, setScrolled] = useState(false);
   const [pct, setPct] = useState(0);
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const openRef = useRef(open);
+  openRef.current = open;
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20);
       const h = document.documentElement.scrollHeight - window.innerHeight;
       setPct(h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0);
+      if (openRef.current) setOpen(false);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+  useEffect(() => {
+    if (!open) return;
+    const onClickOutside = (e: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener('mousedown', onClickOutside);
+    return () => document.removeEventListener('mousedown', onClickOutside);
+  }, [open]);
   const links: [keyof I18nStrings['nav'], string][] = [
     ['inicio', '#inicio'], ['ruta', '#ruta'], ['cursos', '#cursos'], ['precio', '#precio'], ['contacto', '#contacto'],
   ];
   return (
-    <header className={`site-header${scrolled ? ' scrolled' : ''}`}>
+    <header ref={headerRef} className={`site-header${scrolled ? ' scrolled' : ''}`}>
       <div className="wrap nav">
         <div className="progress-bar"><div className="progress-fill" style={{ width: pct + '%' }} /></div>
-        <a className="nav-logo" href="#inicio"><img src={LOGO} alt="Academia Codium" /></a>
+        <a className="nav-logo" href="#inicio"><img src={LOGO} alt="Academia Codium" width={7935} height={2000} /></a>
         <nav className={`nav-links${open ? ' open' : ''}`}>
           {links.map(([k, href]) => (
             <a key={k} href={href} onClick={() => setOpen(false)}>{t.nav[k]}</a>
           ))}
+          <div className="nav-mobile-extras">
+            <div className="lang-toggle">
+              <button className={lang === 'es' ? 'active' : ''} onClick={() => setLang('es')}>ES</button>
+              <button className={lang === 'en' ? 'active' : ''} onClick={() => setLang('en')}>EN</button>
+            </div>
+            <a className="btn btn-primary" href={waLink()} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
+              {t.cta}<ArrowIcon />
+            </a>
+          </div>
         </nav>
         <div className="nav-right">
-          <div className="lang-toggle">
+          <div className="lang-toggle nav-desktop-only">
             <button className={lang === 'es' ? 'active' : ''} onClick={() => setLang('es')}>ES</button>
             <button className={lang === 'en' ? 'active' : ''} onClick={() => setLang('en')}>EN</button>
           </div>
-          <a className="btn btn-primary" href={waLink()} target="_blank" rel="noopener noreferrer" style={{ padding: '11px 20px', fontSize: 14.5 }}>
+          <a className="btn btn-primary nav-desktop-only" href={waLink()} target="_blank" rel="noopener noreferrer" style={{ padding: '11px 20px', fontSize: 14.5 }}>
             {t.cta}<ArrowIcon />
           </a>
           <button className="nav-toggle" onClick={() => setOpen(!open)} aria-label="Menú">
@@ -186,6 +207,7 @@ function MockDashboard() {
 }
 
 function PowerBIDemo({ t }: { t: I18nStrings }) {
+  const [loaded, setLoaded] = useState(false);
   return (
     <div className="pbi-frame reveal">
       <div className="pbi-bar">
@@ -194,9 +216,17 @@ function PowerBIDemo({ t }: { t: I18nStrings }) {
         <span className="pbi-live">LIVE</span>
       </div>
       <div className="pbi-body">
-        {POWERBI_EMBED_URL
+        {loaded
           ? <iframe className="pbi-iframe" src={POWERBI_EMBED_URL} title="Power BI" allowFullScreen />
-          : <MockDashboard />}
+          : (
+            <div className="pbi-placeholder" onClick={() => setLoaded(true)}>
+              <MockDashboard />
+              <div className="pbi-load-overlay">
+                <button className="btn btn-primary" onClick={() => setLoaded(true)}>{t.hero.demo_load}</button>
+              </div>
+            </div>
+          )
+        }
       </div>
       <div className="pbi-note">{t.hero.demo_note}</div>
     </div>
@@ -287,6 +317,7 @@ function Route({ t, lang, onJump }: { t: I18nStrings; lang: Lang; onJump: (id: s
         </div>
         <figure className="route-image reveal">
           <img src={ROUTE_IMAGE} alt={t.route.image_caption}
+            width={1600} height={900}
             onClick={() => setLightboxOpen(true)}
             onError={(e) => { const fig = (e.target as HTMLImageElement).closest('.route-image') as HTMLElement; if (fig) fig.style.display = 'none'; }} />
           <button className="route-image-btn" onClick={() => setLightboxOpen(true)} aria-label="Ver imagen completa">
