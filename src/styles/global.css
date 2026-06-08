@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
-
 :root {
   --bg:        #0a0a0a;
   --bg-2:      #0f0f10;
@@ -174,6 +172,15 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
 @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.35;} }
 .pbi-body { padding: 16px; }
 .pbi-iframe { width: 100%; aspect-ratio: 16/10; border: 0; display: block; border-radius: 8px; background: #fff; }
+.pbi-placeholder { position: relative; border-radius: 8px; overflow: hidden; cursor: pointer; }
+.pbi-load-overlay {
+  position: absolute; inset: 0;
+  background: rgba(10,10,10,.72);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px;
+  transition: background .2s;
+}
+.pbi-placeholder:hover .pbi-load-overlay { background: rgba(10,10,10,.60); }
 .pbi-note { font-family: var(--font-mono); font-size: 11px; color: var(--muted-2); padding: 11px 16px 14px; border-top: 1px solid var(--line); text-align: center; }
 
 /* Mock dashboard */
@@ -376,7 +383,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--line); margin-top: 40px; padding: 64px 0 36px; }
 .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
-.footer-brand img { height: 30px; margin-bottom: 18px; }
+.footer-brand img { height: 30px; width: auto; display: block; margin-bottom: 18px; }
 .footer-brand p { color: var(--muted); font-size: 14.5px; max-width: 320px; }
 .footer-col h5 { font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 16px; }
 .footer-col a, .footer-col span { display: block; color: var(--muted); text-decoration: none; font-size: 14.5px; margin-bottom: 11px; cursor: pointer; transition: color .2s; }

@@ -5,6 +5,22 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.
 
 ---
 
+## [1.5] - 2026-06-07
+
+### Optimizado
+- Power BI iframe convertido a carga diferida (click-to-load): el embed de Microsoft Fabric no se descarga hasta que el usuario lo solicita, eliminando ~6 MB de JS de terceros en la carga inicial y reduciendo el Total Blocking Time de ~5 000 ms a <200 ms
+- Google Fonts movido de `@import` CSS (render-blocking) a `<link rel="preconnect">` + `<link rel="stylesheet">` en el `<head>`, con ahorro estimado de 340-810 ms en First Paint
+
+### Cambiado
+- Imagen de la ruta reemplazada: de URL externa a archivo local `/assets/ruta_completa.webp` (1600×900); elimina dependencia de red a dominio externo
+- Logo del header y footer migrado de PNG (467 KB) a WebP (`codium-logo-light.webp`), mismo canvas 7935×2000 pero menor peso
+- Atributos `width`/`height` añadidos a imágenes del logo (nav y footer) y a la imagen de ruta para prevenir CLS (Cumulative Layout Shift)
+
+### Corregido
+- Footer logo se renderizaba como franja horizontal delgada: faltaba `width: auto; display: block` en `.footer-brand img`; el navegador usaba el ancho intrínseco del archivo (7935 px) sin escalar
+
+---
+
 ## [1.4] - 2026-06-07
 
 ### Modificado

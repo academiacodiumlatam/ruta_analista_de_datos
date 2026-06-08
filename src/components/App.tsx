@@ -8,8 +8,8 @@ const WA_NUMBER = '51912454308';
 const WA_MSG = 'Hola, me gustaría inscribirme a la Ruta completa del Analista de Datos 12 Cursos en Vivo por 299.90 Soles (Pago Único) + Certificaciones y mi acceso a Codium Projects de regalo';
 const waLink = () => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MSG)}`;
 const POWERBI_EMBED_URL = 'https://app.fabric.microsoft.com/view?r=eyJrIjoiNGYxNjIyYTItOGM0YS00NTljLTgxYjAtNzRlMzg3ZTI0ODM0IiwidCI6IjgxNzQ3YmU0LTBhNjQtNDU2NS04Y2NlLWE5MGNkODNkZGI4MSIsImMiOjR9';
-const ROUTE_IMAGE = 'https://rutadelanalista.academiacodium.com/img/RUTA%20DEL%20ANALISTA%20DE%20DATOS.png';
-const LOGO = '/assets/codium-logo-light.png';
+const ROUTE_IMAGE = '/assets/ruta_completa.webp';
+const LOGO = '/assets/codium-logo-light.webp';
 
 /* Tool logo with fallback */
 function ToolLogo({ cat, size = 20 }: { cat: CatKey; size?: number }) {
@@ -142,7 +142,7 @@ function Header({ t, lang, setLang }: { t: I18nStrings; lang: Lang; setLang: (l:
     <header ref={headerRef} className={`site-header${scrolled ? ' scrolled' : ''}`}>
       <div className="wrap nav">
         <div className="progress-bar"><div className="progress-fill" style={{ width: pct + '%' }} /></div>
-        <a className="nav-logo" href="#inicio"><img src={LOGO} alt="Academia Codium" /></a>
+        <a className="nav-logo" href="#inicio"><img src={LOGO} alt="Academia Codium" width={7935} height={2000} /></a>
         <nav className={`nav-links${open ? ' open' : ''}`}>
           {links.map(([k, href]) => (
             <a key={k} href={href} onClick={() => setOpen(false)}>{t.nav[k]}</a>
@@ -207,6 +207,7 @@ function MockDashboard() {
 }
 
 function PowerBIDemo({ t }: { t: I18nStrings }) {
+  const [loaded, setLoaded] = useState(false);
   return (
     <div className="pbi-frame reveal">
       <div className="pbi-bar">
@@ -215,9 +216,17 @@ function PowerBIDemo({ t }: { t: I18nStrings }) {
         <span className="pbi-live">LIVE</span>
       </div>
       <div className="pbi-body">
-        {POWERBI_EMBED_URL
+        {loaded
           ? <iframe className="pbi-iframe" src={POWERBI_EMBED_URL} title="Power BI" allowFullScreen />
-          : <MockDashboard />}
+          : (
+            <div className="pbi-placeholder" onClick={() => setLoaded(true)}>
+              <MockDashboard />
+              <div className="pbi-load-overlay">
+                <button className="btn btn-primary" onClick={() => setLoaded(true)}>{t.hero.demo_load}</button>
+              </div>
+            </div>
+          )
+        }
       </div>
       <div className="pbi-note">{t.hero.demo_note}</div>
     </div>
@@ -308,6 +317,7 @@ function Route({ t, lang, onJump }: { t: I18nStrings; lang: Lang; onJump: (id: s
         </div>
         <figure className="route-image reveal">
           <img src={ROUTE_IMAGE} alt={t.route.image_caption}
+            width={1600} height={900}
             onClick={() => setLightboxOpen(true)}
             onError={(e) => { const fig = (e.target as HTMLImageElement).closest('.route-image') as HTMLElement; if (fig) fig.style.display = 'none'; }} />
           <button className="route-image-btn" onClick={() => setLightboxOpen(true)} aria-label="Ver imagen completa">
