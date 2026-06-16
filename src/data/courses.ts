@@ -45,8 +45,8 @@ export const COURSES: Course[] = [
   {
     id: 'pbi-1', n: 1, cat: 'powerbi', level: 'basico', hours: 7, lessons: 40,
     title:   t('Power BI Básico', 'Power BI Basics'),
-    tagline: t('Da tus primeros pasos en el análisis visual de datos con Power BI',
-               'Take your first steps in visual data analysis with Power BI'),
+    tagline: t('Fundamentos de Power BI para el Análisis de Datos',
+               'Power BI Fundamentals for Data Analysis'),
     modules: [
       { title: t('Descarga e Instalación de Power BI', 'Download and Installation of Power BI'),
         lessons: [ t('Descarga de Power BI desde Microsoft', 'Downloading Power BI from Microsoft'),
@@ -75,7 +75,7 @@ export const COURSES: Course[] = [
                    t('Ejercicio Práctico: Construcción de un Modelo de Datos Relacional', 'Practical Exercise: Building a Relational Data Model'),
                    t('Integración de tablas y relaciones en Power BI', 'Table and Relationship Integration in Power BI') ] },
       { title: t('Visualizaciones e Informes', 'Visualizations and Reports'),
-        lessons: [ t('Exploración de tipos de visualizaciones en Power BI', 'Exploring Visualization Types in Power BI'),
+        lessons: [ t('Exploración de tipos de visualizaciones en Power BI (gráficos de líneas, barras, anillos, mapas, mapas de árbol, tarjetas y otros objetos visuales)', 'Exploring Visualization Types in Power BI (line charts, bar charts, rings, maps, tree maps, cards and other visual objects)'),
                    t('Personalización de objetos visuales mediante colores, títulos, etiquetas, formatos y estilos', 'Visual Object Customization with Colors, Titles, Labels, Formats and Styles'),
                    t('Implementación de filtros, segmentadores y jerarquías para la interacción dinámica de los reportes', 'Filter, Slicer and Hierarchy Implementation for Dynamic Report Interaction'),
                    t('Diseño y construcción de dashboards básicos con múltiples visualizaciones integradas', 'Design and Building of Basic Dashboards with Multiple Integrated Visualizations'),
@@ -100,8 +100,8 @@ export const COURSES: Course[] = [
   {
     id: 'pbi-2', n: 2, cat: 'powerbi', level: 'intermedio', hours: 7, lessons: 32,
     title:   t('Power BI Intermedio', 'Power BI Intermediate'),
-    tagline: t('Domina el modelado de datos y DAX para construir dashboards profesionales',
-               'Master data modeling and DAX to build professional dashboards'),
+    tagline: t('Análisis Empresarial con DAX y KPIs en Power BI',
+               'Business Analysis with DAX and KPIs in Power BI'),
     modules: [
       { title: t('Introducción a DAX y KPIs con Inteligencia Artificial', 'Introduction to DAX and KPIs with Artificial Intelligence'),
         lessons: [ t('Repaso de medidas básicas, columnas calculadas y tablas calculadas', 'Review of Basic Measures, Calculated Columns and Calculated Tables'),
@@ -392,8 +392,8 @@ export const COURSES: Course[] = [
   {
     id: 'pbi-3', n: 9, cat: 'powerbi', level: 'avanzado', hours: 7, lessons: 32,
     title:   t('Power BI Avanzado', 'Power BI Advanced'),
-    tagline: t('Construye soluciones BI empresariales con DAX avanzado, Python e integración con SQL',
-               'Build enterprise BI solutions with advanced DAX, Python and SQL integration'),
+    tagline: t('Analítica Avanzada, Optimización y Automatización con Power BI',
+               'Advanced Analytics, Optimization and Automation with Power BI'),
     modules: [
       { title: t('Optimización de Modelos y Rendimiento', 'Model Optimization and Performance'),
         lessons: [ t('Optimización de modelos de datos y reducción de tamaño del archivo', 'Data Model Optimization and File Size Reduction'),
