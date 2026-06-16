@@ -5,7 +5,7 @@ import { I18N } from '../i18n';
 import type { I18nStrings } from '../i18n';
 
 const WA_NUMBER = '51912454308';
-const WA_MSG = 'Hola, me gustaría inscribirme a la Ruta completa del Analista de Datos 12 Cursos en Vivo por 299.90 Soles (Pago Único) + Certificaciones y mi acceso a Codium Projects de regalo';
+const WA_MSG = 'Hola, me gustaría inscribirme a la Ruta completa del Analista de Datos 12 Cursos en Vivo por 249.90 Soles (Pago Único) + Certificaciones y mi acceso a Codium Projects de regalo';
 const waLink = () => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MSG)}`;
 const POWERBI_EMBED_URL = 'https://app.fabric.microsoft.com/view?r=eyJrIjoiNGYxNjIyYTItOGM0YS00NTljLTgxYjAtNzRlMzg3ZTI0ODM0IiwidCI6IjgxNzQ3YmU0LTBhNjQtNDU2NS04Y2NlLWE5MGNkODNkZGI4MSIsImMiOjR9';
 const ROUTE_IMAGE = '/assets/ruta_completa.webp';
