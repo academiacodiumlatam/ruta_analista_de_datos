@@ -5,6 +5,15 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.
 
 ---
 
+## [1.7] - 2026-06-16
+
+### Cambiado
+- Precio de oferta reducido de S/. 299.90 a **S/. 249.90** (precio original S/. 599.90 sin cambios)
+  - Actualizado en `src/i18n/index.ts` para español e inglés
+  - Actualizado en el mensaje de WhatsApp (`WA_MSG`) en `src/components/App.tsx`
+
+---
+
 ## [1.6] - 2026-06-16
 
 ### Actualizado — Sílabos 2026 (los 12 cursos)
