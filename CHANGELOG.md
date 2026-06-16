@@ -5,6 +5,51 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.
 
 ---
 
+## [1.7] - 2026-06-16
+
+### Cambiado
+- Precio de oferta reducido de S/. 299.90 a **S/. 249.90** (precio original S/. 599.90 sin cambios)
+  - Actualizado en `src/i18n/index.ts` para español e inglés
+  - Actualizado en el mensaje de WhatsApp (`WA_MSG`) en `src/components/App.tsx`
+
+---
+
+## [1.6] - 2026-06-16
+
+### Actualizado — Sílabos 2026 (los 12 cursos)
+
+Revisión completa del contenido de `src/data/courses.ts`: módulos, lecciones, taglines y conteo de lecciones actualizados en los cuatro bloques de cursos para reflejar el sílabo oficial 2026.
+
+#### Power BI
+| Curso | Lecciones antes | Lecciones después | Nuevo tagline |
+|---|---|---|---|
+| Power BI Básico | 24 | 40 | *Fundamentos de Power BI para el Análisis de Datos* |
+| Power BI Intermedio | 32 | 32 | *Análisis Empresarial con DAX y KPIs en Power BI* |
+| Power BI Avanzado | 41 | 32 | *Analítica Avanzada, Optimización y Automatización con Power BI* |
+
+#### Python
+| Curso | Lecciones antes | Lecciones después | Nuevo tagline |
+|---|---|---|---|
+| Python Básico | 29 | 33 | *Fundamentos de Python para el Análisis de Datos y la Automatización* |
+| Python Intermedio | 22 | 33 | *Análisis y Transformación de Datos con Python* |
+| Python Avanzado | 24 | 33 | *Analítica Avanzada y Automatización Empresarial con Python* |
+
+#### SQL Server
+| Curso | Lecciones antes | Lecciones después | Nuevo tagline |
+|---|---|---|---|
+| SQL Básico | 40 | 33 | *Fundamentos de SQL Server para la Gestión de Bases de Datos* |
+| SQL Intermedio | 23 | 33 | *Consultas Avanzadas y Automatización en SQL Server* |
+| SQL Avanzado | 18 | 33 | *Administración, Optimización e Integración Avanzada de SQL Server* |
+
+#### Excel
+| Curso | Lecciones antes | Lecciones después | Nuevo tagline |
+|---|---|---|---|
+| Excel Básico | 28 | 37 | *Fundamentos de Excel para la Gestión y Análisis de Datos* |
+| Excel Intermedio | 28 | 33 | *Automatización y Análisis Intermedio de Datos con Excel* |
+| Excel Avanzado | 28 | 33 | *Desarrollo de Dashboards Ejecutivos y Analítica Avanzada con Excel* |
+
+---
+
 ## [1.5] - 2026-06-07
 
 ### Optimizado
