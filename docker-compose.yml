@@ -1,5 +1,5 @@
 services:
-  web:
+  app:
     build: .
     restart: unless-stopped
     ports:
