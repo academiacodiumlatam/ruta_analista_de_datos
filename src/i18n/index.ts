@@ -5,7 +5,7 @@ export interface I18nStrings {
   cta: string;
   hero: {
     kicker: string; title_a: string; title_b: string; title_c: string; sub: string;
-    cta_primary: string; cta_secondary: string;
+    cta_primary: string; cta_secondary: string; cta_brochure: string;
     stat_cursos: string; stat_horas: string; stat_tools: string;
     demo_label: string; demo_note: string; demo_load: string;
   };
@@ -42,7 +42,7 @@ export const I18N: Record<Lang, I18nStrings> = {
       kicker: 'Ruta del Analista de Datos',
       title_a: 'De cero a', title_b: 'analista de datos', title_c: 'profesional',
       sub: '12 cursos en vivo, secuenciales y prácticos. Aprende Excel, SQL, Python y Power BI en el orden correcto y construye un portafolio real.',
-      cta_primary: 'Inscribirme a la ruta', cta_secondary: 'Ver el temario',
+      cta_primary: 'Inscribirme a la ruta', cta_secondary: 'Ver el temario', cta_brochure: 'Descargar brochure',
       stat_cursos: 'cursos en vivo', stat_horas: 'horas de contenido', stat_tools: 'herramientas clave',
       demo_label: 'Ejemplo · Dashboard en Power BI', demo_note: 'Reporte interactivo embebido desde Power BI Service', demo_load: 'Ver reporte en vivo',
     },
@@ -96,7 +96,7 @@ export const I18N: Record<Lang, I18nStrings> = {
       kicker: 'Data Analyst Learning Path',
       title_a: 'From zero to', title_b: 'professional', title_c: 'data analyst',
       sub: '12 live, sequential, hands-on courses. Learn Excel, SQL, Python and Power BI in the right order and build a real portfolio.',
-      cta_primary: 'Enroll in the path', cta_secondary: 'See the syllabus',
+      cta_primary: 'Enroll in the path', cta_secondary: 'See the syllabus', cta_brochure: 'Download brochure',
       stat_cursos: 'live courses', stat_horas: 'hours of content', stat_tools: 'key tools',
       demo_label: 'Example · Power BI dashboard', demo_note: 'Interactive report embedded from Power BI Service', demo_load: 'View live report',
     },

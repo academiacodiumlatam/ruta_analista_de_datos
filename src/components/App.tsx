@@ -32,6 +32,11 @@ const ChevronIcon = (p: React.SVGProps<SVGSVGElement>) => (
     <path d="M6 9l6 6 6-6" />
   </svg>
 );
+const DownloadIcon = (p: React.SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" {...p}>
+    <path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16" />
+  </svg>
+);
 const CheckIcon = (p: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" {...p}>
     <path d="M20 6L9 17l-5-5" />
@@ -244,8 +249,9 @@ function Hero({ t }: { t: I18nStrings }) {
           <h1>{t.hero.title_a} <span className="text-yellow">{t.hero.title_b}</span> {t.hero.title_c}</h1>
           <p className="sub">{t.hero.sub}</p>
           <div className="hero-cta">
-            <a className="btn btn-primary" href={waLink()} target="_blank" rel="noopener noreferrer">{t.hero.cta_primary}<ArrowIcon /></a>
+            <a className="btn btn-primary" href={waLink()} target="_blank" rel="noopener noreferrer">{t.hero.cta_primary}</a>
             <a className="btn btn-ghost" href="#cursos">{t.hero.cta_secondary}</a>
+            <a className="btn btn-ghost" href="/assets/brochure.pdf" download>{t.hero.cta_brochure}<DownloadIcon /></a>
           </div>
           <div className="hero-stats">
             <div className="hero-stat"><div className="num">12</div><div className="lbl">{t.hero.stat_cursos}</div></div>
