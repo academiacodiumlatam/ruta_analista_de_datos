@@ -5,6 +5,17 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.
 
 ---
 
+## [1.10] - 2026-07-13
+
+### Agregado
+- Botón "Descargar brochure" en el hero, junto a los CTA "Inscribirme a la ruta" y "Ver el temario", con enlace de descarga a `public/assets/brochure.pdf`
+
+### Cambiado
+- Se quita la flecha del botón "Inscribirme a la ruta" para que los tres CTA del hero quepan en una sola fila en escritorio
+- Ajustado el layout de `.hero-cta` para que los tres botones se apilen en columna completa en vista móvil
+
+---
+
 ## [1.9] - 2026-07-12
 
 ### Actualizado
