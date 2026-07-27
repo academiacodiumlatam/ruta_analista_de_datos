@@ -29,7 +29,7 @@ export interface Course {
 export const CATS: Record<CatKey, Cat> = {
   powerbi: { label: 'Power BI', color: '#f6a623', logo: '/assets/logos/powerbi.svg' },
   python:  { label: 'Python',   color: '#2dd4bf', logo: '/assets/logos/python.svg' },
-  sql:     { label: 'SQL',      color: '#3aa17e', logo: '/assets/logos/postgresql.svg' },
+  sql:     { label: 'SQL',      color: '#3aa17e', logo: '/assets/logos/sqlserver.svg' },
   excel:   { label: 'Excel',    color: '#34c759', logo: '/assets/logos/excel.svg' },
 };
 
