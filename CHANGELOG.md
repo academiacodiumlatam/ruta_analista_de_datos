@@ -5,6 +5,16 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.
 
 ---
 
+## [1.11] - 2026-07-27
+
+### Cambiado
+- Precio de oferta actualizado de S/. 249.90 a **S/. 299.90** (precio original S/. 599.90 sin cambios)
+  - Actualizado en `src/i18n/index.ts` para español e inglés
+  - Actualizado en el mensaje de WhatsApp (`WA_MSG`) en `src/components/App.tsx`
+- Logo de la categoría SQL cambiado de PostgreSQL a Microsoft SQL Server (`public/assets/logos/sqlserver.svg`), acorde al sílabo SQL Server 2026
+
+---
+
 ## [1.10] - 2026-07-13
 
 ### Agregado
