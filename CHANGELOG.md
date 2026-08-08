@@ -5,6 +5,13 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.
 
 ---
 
+## [1.12] - 2026-08-07
+
+### Actualizado
+- Imagen de la ruta completa (`public/assets/ruta_completa.webp`) reemplazada por la versión v4, con las fechas de inicio y horarios de los 12 cursos actualizados (del 19/08 al 15/10)
+
+---
+
 ## [1.11] - 2026-07-27
 
 ### Cambiado
