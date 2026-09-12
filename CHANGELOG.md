@@ -5,6 +5,22 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.
 
 ---
 
+## [1.13] - 2026-09-11
+
+### Agregado
+- Nuevo curso especial **Claude — Inteligencia Artificial** (8 módulos, 36 lecciones, 6 horas), insertado como paso 2 de la ruta, con temario extraído de `Cambios/temarios.pdf`
+- Nueva categoría `claude` en `src/data/courses.ts` con logo propio (`public/assets/logos/claude.svg`) y nuevo nivel `especial` para cursos no nivelados
+- Imagen de la ruta completa (`public/assets/ruta_completa.webp`) y brochure (`public/assets/brochure.pdf`) reemplazados por las versiones más recientes
+
+### Cambiado
+- La ruta pasa de 12 a **13 cursos** y de 4 a **5 herramientas clave** (Power BI, Python, SQL, Excel y Claude); el total de horas ahora se calcula dinámicamente y suma 90
+- Reordenada la secuencia completa de cursos: Power BI Básico → Claude → Power BI Intermedio → Excel Básico → Power BI Avanzado → Excel Intermedio → Excel Avanzado → Python Básico → Python Intermedio → SQL Básico → Python Avanzado → SQL Intermedio → SQL Avanzado
+- Precio de oferta actualizado de S/. 299.90 a **S/. 349.90** (precio original S/. 599.90 sin cambios), en `src/i18n/index.ts` (ES/EN)
+- Mensaje de WhatsApp (`WA_MSG` en `src/components/App.tsx`) actualizado con 13 cursos y S/. 349.90
+- Textos de `src/i18n/index.ts` y la descripción de `src/layouts/Layout.astro` actualizados de "12 cursos"/"4 herramientas"/"150 horas" a "13 cursos"/"5 herramientas"/"90 horas"
+
+---
+
 ## [1.12] - 2026-08-07
 
 ### Actualizado
