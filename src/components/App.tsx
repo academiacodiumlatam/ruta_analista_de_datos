@@ -5,7 +5,7 @@ import { I18N } from '../i18n';
 import type { I18nStrings } from '../i18n';
 
 const WA_NUMBER = '51912454308';
-const WA_MSG = 'Hola, me gustaría inscribirme a la Ruta completa del Analista de Datos 12 Cursos en Vivo por 299.90 Soles (Pago Único) + Certificaciones y mi acceso a Codium Projects de regalo';
+const WA_MSG = 'Hola, me gustaría inscribirme a la Ruta completa del Analista de Datos 13 Cursos en Vivo por 349.90 Soles (Pago Único) + Certificaciones y mi acceso a Codium Projects de regalo';
 const waLink = () => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MSG)}`;
 const POWERBI_EMBED_URL = 'https://app.fabric.microsoft.com/view?r=eyJrIjoiNGYxNjIyYTItOGM0YS00NTljLTgxYjAtNzRlMzg3ZTI0ODM0IiwidCI6IjgxNzQ3YmU0LTBhNjQtNDU2NS04Y2NlLWE5MGNkODNkZGI4MSIsImMiOjR9';
 const ROUTE_IMAGE = '/assets/ruta_completa.webp';
@@ -254,9 +254,9 @@ function Hero({ t }: { t: I18nStrings }) {
             <a className="btn btn-ghost" href="/assets/brochure.pdf" download>{t.hero.cta_brochure}<DownloadIcon /></a>
           </div>
           <div className="hero-stats">
-            <div className="hero-stat"><div className="num">12</div><div className="lbl">{t.hero.stat_cursos}</div></div>
+            <div className="hero-stat"><div className="num">{COURSES.length}</div><div className="lbl">{t.hero.stat_cursos}</div></div>
             <div className="hero-stat"><div className="num">{totalHours}<span>+</span></div><div className="lbl">{t.hero.stat_horas}</div></div>
-            <div className="hero-stat"><div className="num">4</div><div className="lbl">{t.hero.stat_tools}</div></div>
+            <div className="hero-stat"><div className="num">{Object.keys(CATS).length}</div><div className="lbl">{t.hero.stat_tools}</div></div>
           </div>
         </div>
         <PowerBIDemo t={t} />
